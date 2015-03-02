@@ -1,3 +1,27 @@
-baseurl = "http://yourSiteHere/"
-languageCode = "en-us"
-title = "My New Hugo Site"
+theme = "redlounge" 
+baseurl = "http://vrecan.github.io" 
+contentdir = "content" 
+layoutdir = "layouts" 
+publishdir = "public" 
+canonifyurls = true 
+languageCode = "en-us" 
+title = "Vrecan..." 
+MetaDataFormat = "toml"
+disqusShortname = "vrecan"
+[taxonomies]
+  category = "categories"
+  tag = "tags" 
+[author] 
+    name = "Ben Aldrich"
+
+[[menu.main]]
+    name = "Posts"
+    url = "/post"
+[[menu.main]]
+    name = "About Me"
+    url = "/about"
+
+[[menu.social]]
+    pre = "<i class='fa fa-github'></i>"
+    url = "http://www.github.com/vrecan"
+    identifier = "github"
