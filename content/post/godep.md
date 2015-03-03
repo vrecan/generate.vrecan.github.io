@@ -1,9 +1,10 @@
 +++
 date = "2015-03-01T20:38:08-07:00"
+Categories = ["Development"]
 draft = false
-title = "Go dependency management"
+title = "Go Dependency Management"
 section = "post"
-tags  = [ "Development", "Go", "Godeps", "Dependency Management" ]
+tags  = [ "Development", "GoLang", "Godeps", "Dependency Management" ]
 +++
 
 <p>Godeps is a nice simple tool that allows you to manage dependencies in a very easy way. One major drawback though is that it requires you to commit your dependencies into your repository. This is great for simplicity but horrible for code review. Seeing a commit with 26k files changed really makes it hard to review.</p>
@@ -34,4 +35,5 @@ godep go test ./... --race
 ```
 
 ## Conclusion / Drawbacks ##
-This works great if you are ok with taking the master branch versions of all your own software. This might not work for everyone but with my workflow this seems to give us the best of both worlds. Easy third party library management and go getable software for all of our repos. This also has the added benefit that we no longer have to remember to update godep everytime we make an internal library change, in our workflow everything in master should be buildable together.
+<p>
+This works great if you are ok with taking the master branch versions of all your own software. This might not work for everyone but with my workflow this seems to give us the best of both worlds. Easy third party library management and go getable software for all of our repos. This also has the added benefit that we no longer have to remember to update godep everytime we make an internal library change, in our workflow everything in master should be buildable together.</p>
