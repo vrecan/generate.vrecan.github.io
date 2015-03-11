@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
 <head>
   <title>
-    Go Dependency Management // Vrecan...
+    Managing Application Shutdown in Go // Vrecan...
   </title>
 
   <link href="http://gmpg.org/xfn/11" rel="profile">
@@ -11,15 +11,15 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 
-<meta name="description" content="">
+<meta name="description" content="Managing the death of go applications.">
 <meta name="keywords" content="">
 <meta name="author" content="">
 
-  <meta property="og:title" content="Go Dependency Management" />
-<meta property="og:description" content="" />
+  <meta property="og:title" content="Managing Application Shutdown in Go" />
+<meta property="og:description" content="Managing the death of go applications." />
 <meta property="og:type" content="website" />
 <meta property="og:locale" content="en_US" />
-<meta property="og:url" content="http://vrecan.github.io/post/godep/" />
+<meta property="og:url" content="http://vrecan.github.io/post/golang_shutdown/" />
 
 
   
@@ -133,8 +133,13 @@
 <ul>
 <li>
 <ul>
-<li><a href="#building-with-new-dependencies:8a18e8b20bd4ceba8c6e1d3df562deeb">Building with new dependencies</a></li>
-<li><a href="#conclusion-drawbacks:8a18e8b20bd4ceba8c6e1d3df562deeb">Conclusion / Drawbacks</a></li>
+<li>
+<ul>
+<li><a href="#overview:a3f014005cf18d6d375bffc268e2748e">Overview</a></li>
+<li><a href="#requirements:a3f014005cf18d6d375bffc268e2748e">Requirements</a></li>
+<li><a href="#how-do-you-use-it:a3f014005cf18d6d375bffc268e2748e">How do you use it?</a></li>
+<li><a href="#summary:a3f014005cf18d6d375bffc268e2748e">Summary</a></li>
+</ul></li>
 </ul></li>
 </ul>
 </nav>
@@ -143,14 +148,14 @@
 	    
   		<section class="post">
             <h1 class="post-title">
-              <a href="http://vrecan.github.io/post/godep">Go Dependency Management</a>
+              <a href="http://vrecan.github.io/post/golang_shutdown">Managing Application Shutdown in Go</a>
             </h1>
             <h3 class="post-subtitle">
             	
             </h3>
             
             	<span class="post-date">
-                	<span class="post-date-day"><sup>1</sup></span><span class="post-date-separator">/</span><span class="post-date-month">Mar</span> <span class="post-date-year">2015</span>
+                	<span class="post-date-day"><sup>10</sup></span><span class="post-date-separator">/</span><span class="post-date-month">Mar</span> <span class="post-date-year">2015</span>
             	</span>
             	
             
@@ -172,37 +177,78 @@
 
             
 
-<p>Godeps is a nice simple tool that allows you to manage dependencies in a very easy way. One major drawback though is that it requires you to commit your dependencies into your repository. This is great for simplicity but horrible for code review. Seeing a commit with 26k files changed really makes it hard to review.</p>
+<h3 id="overview:a3f014005cf18d6d375bffc268e2748e">Overview</h3>
 
-<p>I&rsquo;ve found a simple solution to the problem if you use the common go import layout</p>
+<p>I was looking around and couldn&rsquo;t find a simple library that would manage application shutdown using signals. I decied to build a simple library to handle application shutdown and calling Close methods on structs when shutdown was signaled. It is called <a href="http://github.com/vrecan/death" title="Application shutdown library for golang">death</a>.</p>
 
-<pre><code>+-- github.com
-|   +-- company
-|   |   +-- project
+<h3 id="requirements:a3f014005cf18d6d375bffc268e2748e">Requirements</h3>
+
+<ul>
+<li>Should only need to pass the signals you want to use for shutdown.</li>
+<li>Block the application from shutting down until signal was recieved.</li>
+<li>Optionally pass structs with a Close method to cleanup objects when shutdown is signaled.</li>
+</ul>
+
+<h3 id="how-do-you-use-it:a3f014005cf18d6d375bffc268e2748e">How do you use it?</h3>
+
+<p>Import death and syscall so that you can pass the signals you want to shutdown with.</p>
+
+<pre><code>package main
+
+import (
+    DEATH &quot;github.com/vrecan/death&quot;
+    SYS &quot;syscall&quot;
+)
 </code></pre>
 
-<p>If you follow this layout then you can easily extract all your deps into their own repo like so.</p>
+<p>Now create a death struct with the signals we want to use for shutdown.</p>
 
-<pre><code>cd github.com/company
-godep save ./...
+<pre><code>    death := DEATH.NewDeath(SYS.SIGINT, SYS.SIGTERM)
+    defer death.Close()
 </code></pre>
 
-<p>This will Recursively grab your dependencies that are not in this path and put them in a godeps folder at the company depth. Now add the contents of the new Godeps folder into a new repo with the name Godeps. </p>
+<p>Once we are doing setting up everything in our application we can then call WaitForDeath() to block our application from shutting down.</p>
 
-<h2 id="building-with-new-dependencies:8a18e8b20bd4ceba8c6e1d3df562deeb">Building with new dependencies</h2>
-
-<p>Now that you have dependencies in their own repo you can add Godeps to your .gitignore for all your other repos and pull them down locally.</p>
-
-<pre><code>cd github.com/company/project
-git clone github.com/company/Godeps
-godep go buld
-godep go test ./... --race
+<pre><code>    death.WaitForDeath()
 </code></pre>
 
-<h2 id="conclusion-drawbacks:8a18e8b20bd4ceba8c6e1d3df562deeb">Conclusion / Drawbacks</h2>
+<p>You can also have death automically close structs for you when shutdown is triggered. Create a slice to contain all the items you want to call Close().</p>
 
-<p>
-This works great if you are ok with taking the master branch versions of all your own software. This might not work for everyone but with my workflow this seems to give us the best of both worlds. Easy third party library management and go getable software for all of our repos. This also has the added benefit that we no longer have to remember to update godep everytime we make an internal library change, in our workflow everything in master should be buildable together.</p>
+<pre><code>objects := make([]DEATH.Closable, 0)
+
+</code></pre>
+
+<p>Your structs just need a Close() method to implement the Closable interface</p>
+
+<pre><code>type NewType struct {
+}
+
+func (n *NewType) Close() {
+}
+
+</code></pre>
+
+<p>Once your go routine(s) have been started append them to the slice.</p>
+
+<pre><code>    objects = append(objects, &amp;NewType{})
+
+</code></pre>
+
+<p>Now just pass them in when you are going to call WaitForDeath()</p>
+
+<pre><code>    death.WaitForDeath(objects...)
+</code></pre>
+
+<p>You can also pass them in one by one if you prefer</p>
+
+<pre><code>death.WaitForDeath(object1, object2, object3)
+</code></pre>
+
+<h3 id="summary:a3f014005cf18d6d375bffc268e2748e">Summary</h3>
+
+<p>I&rsquo;m actually pretty happy with this library. It does everything I need it to do and has been really useful to just drop in and have solid shutdown management. It does currently use seelog to log a few things this could easily be removed. All of our applications use seelog for application logs but I would love to hear if there are any good ideas about managing logging inside of libraries. I&rsquo;ve thought about having the ablilty to pass in a logger with an interface but I would like to hear how other people deal with this.</p>
+
+<p><a href="http://github.com/vrecan/death" title="Application shutdown library for golang">Managing death in go</a>.</p>
 
 	
 			
@@ -215,9 +261,9 @@ This works great if you are ok with taking the master branch versions of all you
 	                
 	                <a class="post-tag post-tag-golang" href="http://vrecan.github.io//tags/golang">GoLang</a>,
 	                
-	                <a class="post-tag post-tag-godeps" href="http://vrecan.github.io//tags/godeps">Godeps</a>,
+	                <a class="post-tag post-tag-shutdown" href="http://vrecan.github.io//tags/shutdown">Shutdown</a>,
 	                
-	                <a class="post-tag post-tag-dependency-management" href="http://vrecan.github.io//tags/dependency-management">Dependency Management</a>,
+	                <a class="post-tag post-tag-signals" href="http://vrecan.github.io//tags/signals">Signals</a>,
 	                
 				</div>
 			
@@ -226,16 +272,11 @@ This works great if you are ok with taking the master branch versions of all you
 				<div class="paging">
 					<span class="paging-label">More Reading</span>
 					
-					<div class="paging-newer">
-						<span class="dark-red">Newer</span><span class="decorative-marker">//</span>
-						<a class="paging-link" href="http://vrecan.github.io/post/crosscompile_go_zeromq">Compiling ZeroMQ for Windows in Centos 7</a>
-		            </div>
-		            
 
 					
 					<div class="paging-older">
 						<span class="dark-red">Older</span><span class="decorative-marker">//</span>
-			            <a class="paging-link" href="http://vrecan.github.io/about/about">About Me</a>
+			            <a class="paging-link" href="http://vrecan.github.io/post/crosscompile_go_zeromq">Compiling ZeroMQ for Windows in Centos 7</a>
 		            </div>
 		            
 	            </div>
@@ -245,9 +286,9 @@ This works great if you are ok with taking the master branch versions of all you
           	<div id="disqus_thread"></div>
 <script type="text/javascript">
     var disqus_shortname = 'vrecan';
-    var disqus_identifier = 'http:\/\/vrecan.github.io\/post\/godep\/';
-    var disqus_title = 'Go Dependency Management';
-    var disqus_url = 'http:\/\/vrecan.github.io\/post\/godep\/';
+    var disqus_identifier = 'http:\/\/vrecan.github.io\/post\/golang_shutdown\/';
+    var disqus_title = 'Managing Application Shutdown in Go';
+    var disqus_url = 'http:\/\/vrecan.github.io\/post\/golang_shutdown\/';
 
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;

@@ -19,9 +19,14 @@ disqusShortname = "vrecan"
     url = "/post"
 [[menu.main]]
     name = "About Me"
-    url = "/about"
+    url = "/about/about/"
 
 [[menu.social]]
     pre = "<i class='fa fa-github'></i>"
     url = "http://www.github.com/vrecan"
     identifier = "github"
+
+[[menu.social]]
+   pre = "<i class='fa fa-google-plus'></i>"
+   url = "http://google.com/+BenAldrich"
+   identifier = "google-plus"
