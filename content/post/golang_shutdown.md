@@ -9,7 +9,7 @@ title = "Managing Application Shutdown in Go"
 
 ### Overview
 
-I was looking around and couldn't find a simple library that would manage application shutdown using signals. I decied to build a simple library to handle application shutdown and calling Close methods on structs when shutdown was signaled. It is called [death](http://github.com/vrecan/death "Application shutdown library for golang").
+I was looking around and couldn't find a simple library that would manage application shutdown using signals. I decided to build a simple library to handle application shutdown and calling Close methods on structs when shutdown was signaled. It is called [death](http://github.com/vrecan/death "Application shutdown library for golang").
 
 ### Requirements
 * Should only need to pass the signals you want to use for shutdown.
