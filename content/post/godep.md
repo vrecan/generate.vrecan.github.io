@@ -5,6 +5,7 @@ draft = false
 title = "Go Dependency Management"
 section = "post"
 tags  = [ "Development", "GoLang", "Godeps", "Dependency Management" ]
+socialsharing = true
 +++
 
 <p>Godeps is a nice simple tool that allows you to manage dependencies in a very easy way. One major drawback though is that it requires you to commit your dependencies into your repository. This is great for simplicity but horrible for code review. Seeing a commit with 26k files changed really makes it hard to review.</p>

@@ -5,6 +5,7 @@ Tags = ["Development", "GoLang", "Shutdown", "Signals"]
 date = "2015-03-10T20:23:05-06:00"
 menu = "post"
 title = "Managing Application Shutdown in Go"
+socialsharing = true
 +++
 
 ### Overview

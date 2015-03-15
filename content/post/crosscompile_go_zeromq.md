@@ -5,6 +5,7 @@ date = "2015-03-02T20:29:34-07:00"
 title = "Compiling ZeroMQ for Windows in Centos 7"
 section = "post"
 tags  = [ "Development", "GoLang", "ZeroMQ", "Cross Compile", "MinGW", "Compile", "Build", "Centos 7" ]
+socialsharing = true
 +++
 
 <p>I've found it really dificult to find a concrete tutorial for building zeromq for go in windows using MinGW in centos 7. First lets add the epel-release repo.</p>
