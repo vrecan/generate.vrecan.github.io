@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
 <head>
   <title>
-    Dependency Management // Vrecan...
+    Influxdb // Vrecan...
   </title>
 
   <link href="http://gmpg.org/xfn/11" rel="profile">
@@ -15,11 +15,11 @@
 <meta name="keywords" content="">
 <meta name="author" content="">
 
-  <meta property="og:title" content="Dependency Management" />
+  <meta property="og:title" content="Influxdb" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
 <meta property="og:locale" content="en_US" />
-<meta property="og:url" content="http://localhost:1313/tags/dependency-management/" />
+<meta property="og:url" content="http://localhost:1313/tags/influxdb/" />
 
 
   
@@ -41,7 +41,7 @@
   <link rel="shortcut icon" href="/favicon.png">
 
   
-  <link href="http://localhost:1313/tags/dependency-management/index.xml" rel="alternate" type="application/rss+xml" title="Vrecan..." />
+  <link href="http://localhost:1313/tags/influxdb/index.xml" rel="alternate" type="application/rss+xml" title="Vrecan..." />
 
     
   
@@ -116,20 +116,20 @@
             <header class="post-header">
             
             <h1 class="post-title">
-              <a href="/post/godep/">Go Dependency Management</a>
+              <a href="/post/intro_fluxdash/">InfluxDB Terminal Dashboards with FluxDash</a>
             </h1>
             </header>
             <p class="post-meta">
             	
 		          <span class="post-date">
-		            <span class="post-date-day"><sup>1</sup></span><span class="post-date-separator">/</span><span class="post-date-month">Mar</span> <span class="post-date-year">2015</span>
+		            <span class="post-date-day"><sup>28</sup></span><span class="post-date-separator">/</span><span class="post-date-month">Dec</span> <span class="post-date-year">2015</span>
 		          </span>
       				
       				
       					
       				
               
-                <span class="post-reading-time"><i class="fa fa-clock-o"></i> <em>2 min. read</em></span>
+                <span class="post-reading-time"><i class="fa fa-clock-o"></i> <em>4 min. read</em></span>
               
       				
       					<div class="post-categories">
@@ -141,10 +141,10 @@
       				
             </p>
             <article class="post-summary">
-            	Godeps is a nice simple tool that allows you to manage dependencies in a very easy way. One major drawback though is that it requires you to commit your dependencies into your repository. This is great for simplicity but horrible for code review. Seeing a commit with 26k files changed really makes it hard to review. I&rsquo;ve found a simple solution to the problem if you use the common go import layout +-- github.com | +-- company | | +-- project If you follow this layout then you can easily extract all your deps into their own repo like so.
+            	Overview FluxDash is a dashboard terminal ui that is fully configurable through json files. You can either give it an indivudual json file or a folder and it will read any json file in the folder and attemp to turn it into a dashboard. You can then move between dashboard by pressing . Features Sparklines Sparklines are a simplified single stat linechart that gives you basic trending over time. Example json: "sparklines": { "Height": 1, "lines": [{ "from": "/system.cpu/", "title": "CPU", "where": "", "type": 2, "height": 1, "linecolor": 5, "titlecolor": 0 }, { "from": "/system.mem.free/", "title": "System Free memory", "type": 3, "height": 1 }, { "from": "/system.mem.cached/", "title": "System Cached memory", "type": 3, "height": 1 }, { "from": "/system.mem.buffers/", "title": "System Buffers memory", "type": 3, "height": 1 }] } MultiSpark A set of sparklines that have been expanded automatically based on a influxdb tag.
             </article>
 			<div class="read-more-link">
-				<a href="/post/godep/"><span class="read-more-slashes">//</span>Read More...</a>
+				<a href="/post/intro_fluxdash/"><span class="read-more-slashes">//</span>Read More...</a>
 			</div>
           </section>
         

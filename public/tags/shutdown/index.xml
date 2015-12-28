@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Shutdown on Vrecan...</title>
-    <link>http://vrecan.github.io/tags/shutdown/</link>
+    <link>http://localhost:1313/tags/shutdown/</link>
     <description>Recent content in Shutdown on Vrecan...</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 19 Mar 2015 22:11:18 -0600</lastBuildDate>
-    <atom:link href="http://vrecan.github.io/tags/shutdown/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/tags/shutdown/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Parallel Graceful Shutdown in Go</title>
-      <link>http://vrecan.github.io/post/death_parallel_shutdown/</link>
+      <link>http://localhost:1313/post/death_parallel_shutdown/</link>
       <pubDate>Thu, 19 Mar 2015 22:11:18 -0600</pubDate>
       
-      <guid>http://vrecan.github.io/post/death_parallel_shutdown/</guid>
+      <guid>http://localhost:1313/post/death_parallel_shutdown/</guid>
       <description>
 
 &lt;h3 id=&#34;overview:d43027cab780c369fd9e2e145dc0c7e6&#34;&gt;Overview&lt;/h3&gt;
@@ -98,10 +98,10 @@ func (d *Death) closeObjects(c Closable, done chan&amp;lt;- bool) {
     
     <item>
       <title>Managing Application Shutdown in Go</title>
-      <link>http://vrecan.github.io/post/golang_shutdown/</link>
+      <link>http://localhost:1313/post/golang_shutdown/</link>
       <pubDate>Tue, 10 Mar 2015 20:23:05 -0600</pubDate>
       
-      <guid>http://vrecan.github.io/post/golang_shutdown/</guid>
+      <guid>http://localhost:1313/post/golang_shutdown/</guid>
       <description>
 
 &lt;h3 id=&#34;overview:a3f014005cf18d6d375bffc268e2748e&#34;&gt;Overview&lt;/h3&gt;
@@ -173,7 +173,7 @@ func (n *NewType) Close() {
 &lt;h3 id=&#34;update:a3f014005cf18d6d375bffc268e2748e&#34;&gt;&lt;strong&gt;&lt;em&gt;Update&lt;/em&gt;&lt;/strong&gt;&lt;/h3&gt;
 
 &lt;p&gt;The newest version now does closing of objects in parallel with a timeout. This allows you to limit how long you are willing to wait for shutdown of all your objects. Because they are in parallel this is the total time you are willing to wait and not per object.
-&lt;a href=&#34;http://vrecan.github.io/post/death_parallel_shutdown/&#34; title=&#34;Application shutdown library for golang&#34;&gt;Parallel shutdown in go&lt;/a&gt;.&lt;/p&gt;
+&lt;a href=&#34;http://localhost:1313/post/death_parallel_shutdown/&#34; title=&#34;Application shutdown library for golang&#34;&gt;Parallel shutdown in go&lt;/a&gt;.&lt;/p&gt;
 
 &lt;h3 id=&#34;summary:a3f014005cf18d6d375bffc268e2748e&#34;&gt;Summary&lt;/h3&gt;
 
