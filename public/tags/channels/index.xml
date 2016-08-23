@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Channels on Vrecan...</title>
-    <link>http://localhost:1313/tags/channels/</link>
+    <link>http://vrecan.github.io/tags/channels/</link>
     <description>Recent content in Channels on Vrecan...</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 29 Mar 2015 16:38:08 -0700</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/channels/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://vrecan.github.io/tags/channels/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Gracefull Shutdown of Goroutines</title>
-      <link>http://localhost:1313/post/graceful_goroutnes/</link>
+      <link>http://vrecan.github.io/post/graceful_goroutnes/</link>
       <pubDate>Sun, 29 Mar 2015 16:38:08 -0700</pubDate>
       
-      <guid>http://localhost:1313/post/graceful_goroutnes/</guid>
+      <guid>http://vrecan.github.io/post/graceful_goroutnes/</guid>
       <description>
 
 &lt;h3 id=&#34;overview:ec207a846908786b018fd316c62fe3cf&#34;&gt;Overview&lt;/h3&gt;
@@ -135,10 +135,10 @@ func main() {
     
     <item>
       <title>Parallel Graceful Shutdown in Go</title>
-      <link>http://localhost:1313/post/death_parallel_shutdown/</link>
+      <link>http://vrecan.github.io/post/death_parallel_shutdown/</link>
       <pubDate>Thu, 19 Mar 2015 22:11:18 -0600</pubDate>
       
-      <guid>http://localhost:1313/post/death_parallel_shutdown/</guid>
+      <guid>http://vrecan.github.io/post/death_parallel_shutdown/</guid>
       <description>
 
 &lt;h3 id=&#34;overview:d43027cab780c369fd9e2e145dc0c7e6&#34;&gt;Overview&lt;/h3&gt;

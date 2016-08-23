@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Waitgroup on Vrecan...</title>
-    <link>http://localhost:1313/tags/waitgroup/</link>
+    <link>http://vrecan.github.io/tags/waitgroup/</link>
     <description>Recent content in Waitgroup on Vrecan...</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 29 Mar 2015 16:38:08 -0700</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/waitgroup/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://vrecan.github.io/tags/waitgroup/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Gracefull Shutdown of Goroutines</title>
-      <link>http://localhost:1313/post/graceful_goroutnes/</link>
+      <link>http://vrecan.github.io/post/graceful_goroutnes/</link>
       <pubDate>Sun, 29 Mar 2015 16:38:08 -0700</pubDate>
       
-      <guid>http://localhost:1313/post/graceful_goroutnes/</guid>
+      <guid>http://vrecan.github.io/post/graceful_goroutnes/</guid>
       <description>
 
 &lt;h3 id=&#34;overview:ec207a846908786b018fd316c62fe3cf&#34;&gt;Overview&lt;/h3&gt;

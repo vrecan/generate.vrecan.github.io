@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Fluxdash on Vrecan...</title>
-    <link>http://localhost:1313/tags/fluxdash/</link>
+    <link>http://vrecan.github.io/tags/fluxdash/</link>
     <description>Recent content in Fluxdash on Vrecan...</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 28 Dec 2015 16:38:08 -0700</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/fluxdash/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://vrecan.github.io/tags/fluxdash/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>InfluxDB Terminal Dashboards with FluxDash</title>
-      <link>http://localhost:1313/post/intro_fluxdash/</link>
+      <link>http://vrecan.github.io/post/intro_fluxdash/</link>
       <pubDate>Mon, 28 Dec 2015 16:38:08 -0700</pubDate>
       
-      <guid>http://localhost:1313/post/intro_fluxdash/</guid>
+      <guid>http://vrecan.github.io/post/intro_fluxdash/</guid>
       <description>
 
 &lt;h3 id=&#34;overview:890ca4461a7712ff7ba32a852ca76ffd&#34;&gt;Overview&lt;/h3&gt;
@@ -122,7 +122,7 @@ Where allows you to add to the where clause in your influxdb query.&lt;/li&gt;
 
 &lt;p&gt;This will become configurable eventually but these are the most commonly used in our system.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/fluxdashv2.gif&#34; alt=&#34;Example Dashboard&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;http://vrecan.github.io/fluxdashv2.gif&#34; alt=&#34;Example Dashboard&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;You will also notice that the refresh and the group by interval are adjusted based on the time range. Again this will be come configurable at a later date.&lt;/p&gt;
